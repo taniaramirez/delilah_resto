@@ -50,7 +50,9 @@ Una vez enviada la petición, el software le devolverá un token, este debe ser 
 <li> Si desea registrarse con permisos de administrador, ingrese a la ruta localhost:3000/login. En el body de esta petición se encuentra el usuario y contraseña registrado previamente en la base de datos (puede ser midificado desde allí). </li>
 <li> Una vez enviada la petición de login se le devolverá el token de administrador, el cual debe ser utilizado en los headers de las rutas que requieran dicho permiso (por ejemplo listar todas los pedidos o cambiar el estado de una orden). </li>
 <li> El token debe ingresarse en la fila "Authorization - Bearer (token otorgado)".
-<li> Toda información que se envíe a la base de datos, por ejemplo hacer o modificar un pedido, o modificar un producto, se debe hacer desde el body de la petición.</li>  
+<li> Toda información que se envíe a la base de datos, por ejemplo hacer o modificar un pedido, o modificar un producto, se debe hacer desde el body de la petición.</li>
+<li> Para cualquier ruta que necesite un id específico (por ejemplo editar un pedido/producto), se debe obtener dicho id en la base de datos y agregar l final de la ruta.
+<li>Para eliminar un producto se debe buscar el id en la base de datos y agregarlo al final de la ruta. 
 </ul>
 <strong>Todo listo</strong>
 <ul>
