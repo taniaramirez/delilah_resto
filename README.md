@@ -29,9 +29,27 @@ npm run dev (esto iniciará el servidor en el puerto 3000)</li>
 <strong>Rutas</strong>
 <ul>
 <li>Importe el archivo delilah-resto-api.postman_collection.json en Postman.</li>
-<li>En este software, ingrese a la ruta localhost:3000/register para registrarse como usuario sin permisos de administrador. Ingrese  localhost:3000/login y obtenga su token para realizar operaciones con permisos de administrador. </li>
+<li>En este software, ingrese a la ruta localhost:3000/register para registrarse como usuario sin permisos de administrador. Para esto, en el body de la petición se encuentran previamente cargados los datos que serán enviados a la base de datos (estos pueden ser modificados). Estos se encuentran en el siguiente formato: 
+<br> <br>
+<code>
+ {
+    "userName": "user",
+    "name": "Pepe",
+    "lastName": "Grillo",
+    "email": "test@test.com",
+    "phone": 3415556677,
+    "address": "Calle Imaginaria 123",
+    "password": "test"
+}
+</code>
+<br><br>
+Una vez enviada la petición, el software le devolverá un token, este debe ser igresado en los headers de las siguientes rutas que sean permitidas sin permiso de administrador (por ejemplo generar una orden). 
+<li> El token debe ingresarse en la fila "Authorization - Bearer (token otorgado)".
+<br>
+</li>
+<li> Si desea registrarse con permisos de administrador, ingrese a la ruta localhost:3000/login. En el body de esta petición se encuentra el usuario y contraseña registrado previamente en la base de datos (puede ser midificado desde allí). </li>
+<li> Una vez enviada la petición de login se le devolverá el token de administrador, el cual debe ser utilizado en los headers de las rutas que requieran dicho permiso (por ejemplo listar todas los pedidos). </li>
+<li> El token debe ingresarse en la fila "Authorization - Bearer (token otorgado)".
 </ul>
 <strong>Todo listo</strong>
-<ul>
-<li>Con el token recibido podrá probar todas las rutas</li>
-</ul>
+<li>Ahora podrá probar todas las rutas</li>
