@@ -53,4 +53,6 @@ Una vez enviada la petición, el software le devolverá un token, este debe ser 
 <li> Toda información que se envíe a la base de datos, por ejemplo hacer o modificar un pedido, o modificar un producto, se debe hacer desde el body de la petición.</li>  
 </ul>
 <strong>Todo listo</strong>
+<ul>
 <li>Ahora podrá probar todas las rutas</li>
+</ul>
