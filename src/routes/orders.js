@@ -174,4 +174,61 @@ router.put("/:id", middlewares.verifyToken, (req, res) => {
   }
 });
 
+router.delete(
+  "/:id",
+  middlewares.verifyToken,
+  middlewares.verifyAdm,
+  (req, res) => {
+    let idOrder = req.params.id;
+    sql
+      .query("SELECT * FROM orderDetails WHERE id = ?", {
+        replacements: [idOrder],
+        type: sql.QueryTypes.SELECT,
+      })
+      .then((order) => {
+        if (order != undefined) {
+          sql
+            .query("DELETE FROM orderDetails WHERE id = ?", {
+              replacements: [idOrder],
+              type: sql.QueryTypes.DELETE,
+            })
+            .then(() => {
+              sql.query("SELECT FROM orders WHERE id = ?", {
+                replacements: [idOrder],
+                type: sql.QueryTypes.SELECT,
+              });
+            })
+            .then(() => {
+              sql.query("DELETE FROM orders WHERE id = ?", {
+                replacements: [idOrder],
+                type: sql.QueryTypes.DELETE,
+              });
+            })
+            .then(() => {
+              res.status(200).json({
+                msg: "The order has been successfully deleted",
+                rta: order[0],
+              });
+            })
+            .catch((errorStack) => {
+              res.status(500).json({
+                error: "DB error",
+                errorStack,
+              });
+            });
+        } else {
+          res.status(200).json({
+            error: "There are no orders listed with that identifier",
+          });
+        }
+      })
+      .catch((errorStack) => {
+        res.status(500).json({
+          error: "DB error",
+          errorStack,
+        });
+      });
+  }
+);
+
 module.exports = router;
