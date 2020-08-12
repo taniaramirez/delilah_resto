@@ -52,7 +52,8 @@ Una vez enviada la petición, el software le devolverá un token, este debe ser 
 <li> El token debe ingresarse en la fila "Authorization - Bearer (token otorgado)".
 <li> Toda información que se envíe a la base de datos, por ejemplo hacer o modificar un pedido, o modificar un producto, se debe hacer desde el body de la petición.</li>
 <li> Para cualquier ruta que necesite un id específico (por ejemplo editar un pedido/producto), se debe obtener dicho id en la base de datos y agregar al final de la ruta.
-<li>Para eliminar un producto se debe buscar el id en la base de datos y agregarlo al final de la ruta. 
+<li>Para eliminar un producto se debe buscar el id en la base de datos y agregarlo al final de la ruta. </li>
+<li>Para eliminar un pedido se debe seguir el mismo procedimiento.</li>
 </ul>
 <strong>Todo listo</strong>
 <ul>
