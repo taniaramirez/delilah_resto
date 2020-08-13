@@ -193,7 +193,7 @@ router.delete(
               type: sql.QueryTypes.DELETE,
             })
             .then(() => {
-              sql.query("SELECT FROM orders WHERE id = ?", {
+              sql.query("SELECT * FROM orders WHERE id = ?", {
                 replacements: [idOrder],
                 type: sql.QueryTypes.SELECT,
               });
